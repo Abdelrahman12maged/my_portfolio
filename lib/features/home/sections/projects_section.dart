@@ -9,69 +9,52 @@ import '../widgets/project_card.dart';
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
 
-  // Project data with all images
+  // Project data
   static const List<Map<String, dynamic>> projects = [
     {
       'title': 'Khadmaty',
       'description':
-          'Full-stack marketplace application using Clean Architecture and Repository Pattern with advanced state management.',
-      'technologies': ['Flutter', 'Clean Architecture', 'Bloc', 'Firebase'],
-      'images': [
-        'assets/images/Khadamaty_images/1.jpeg',
-        'assets/images/Khadamaty_images/2.jpeg',
-        'assets/images/Khadamaty_images/3.jpeg',
-        'assets/images/Khadamaty_images/4.jpeg',
-        'assets/images/Khadamaty_images/5.jpeg',
-        'assets/images/Khadamaty_images/6.jpeg',
-        'assets/images/Khadamaty_images/7.jpeg',
-        'assets/images/Khadamaty_images/8.jpeg',
-        'assets/images/Khadamaty_images/9.jpeg',
-        'assets/images/Khadamaty_images/10.jpeg',
+          'Full-stack marketplace connecting customers with local service providers. Clean Architecture with 3-layer separation, Repository Pattern, Dependency Injection using GetIt, and dual service types with Arabic/English localization.',
+      'technologies': [
+        'Flutter',
+        'Firebase',
+        'Bloc/Cubit',
+        'GetIt',
+        'Clean Architecture'
       ],
+      'coverImage': 'assets/images/Khadamaty_images/1.png',
+      'githubUrl': 'https://github.com/Abdelrahman12maged/khadamaty_app',
     },
     {
       'title': 'Hcc_Detector',
       'description':
-          'AI-Powered diagnosis tool for hepatocellular carcinoma detection. Built for Desktop and Web using Flutter and PyTorch.',
+          'AI-Powered HCC diagnosis application assisting doctors in detecting Hepatocellular Carcinoma. Trained on real CT images from Al-Rajhi Liver Hospital with a PyTorch deep learning backend.',
       'technologies': ['Flutter', 'PyTorch', 'AI/ML', 'Desktop'],
-      'images': [],
-      'video': 'assets/images/hcc_demo/hcc.mp4',
+      'coverImage': 'assets/images/hcc_demo/1.png',
+      'githubUrl': 'https://github.com/Abdelrahman12maged/hcc_detector',
     },
     {
       'title': 'Rozewell Learning Center',
       'description':
-          'Real-time communication and learning management app with 1000+ active users. Features live chat and course management.',
-      'technologies': ['Flutter', 'Firebase', 'Real-time', 'Bloc'],
-      'images': [
-        'assets/images/Rozewailimages/WhatsApp Image 2024-07-14 at 2.34.28 PM.jpg',
-        'assets/images/Rozewailimages/WhatsApp Image 2024-07-14 at 2.34.28 PM (1).jpeg',
-        'assets/images/Rozewailimages/WhatsApp Image 2024-07-14 at 2.34.28 PM (2).jpeg',
-        'assets/images/Rozewailimages/WhatsApp Image 2024-07-14 at 2.34.28 PM (2).jpg',
-        'assets/images/Rozewailimages/WhatsApp Image 2024-07-14 at 2.34.27 PM (1).jpg',
-        'assets/images/Rozewailimages/unnamed.webp',
-      ],
+          'Real-time student-teacher communication app serving 1000+ active users. Features Firebase Cloud Messaging, multimedia support, and 10+ REST API integrations. 4.2+ star rating on Google Play.',
+      'technologies': ['Flutter', 'Firebase', 'REST APIs', 'Bloc'],
+      'coverImage': 'assets/images/Rozewailimages/unnamed.webp',
+      'githubUrl':
+          'https://play.google.com/store/apps/details?id=at.rozewail.rozewailapp',
     },
     {
       'title': 'Fix Notify OnePlus',
       'description':
-          'Maintenance tracking application with custom Platform Channels for native Android integration and notifications.',
+          'Maintenance tracking app with custom Platform Channels for native SMS functionality. Built with Clean Architecture, BLoC, Firebase Auth & Firestore, and responsive Material 3 design.',
       'technologies': [
         'Flutter',
         'Platform Channels',
-        'Android',
-        'Notifications',
+        'Firebase',
+        'Clean Architecture',
       ],
-      'images': [
-        'assets/images/fix_notify_images/0.png',
-        'assets/images/fix_notify_images/1.png',
-        'assets/images/fix_notify_images/2.png',
-        'assets/images/fix_notify_images/3.png',
-        'assets/images/fix_notify_images/4.png',
-        'assets/images/fix_notify_images/5.png',
-        'assets/images/fix_notify_images/6.png',
-        'assets/images/fix_notify_images/7.png',
-        'assets/images/fix_notify_images/8.png',
-      ],
+      'coverImage': 'assets/images/fix_notify_images/1.png',
+      'githubUrl':
+          'https://github.com/Abdelrahman12maged/Fix_Notify_OnePlus_App',
     },
   ];
 
@@ -100,8 +83,8 @@ class ProjectsSection extends StatelessWidget {
               ShaderMask(
                 shaderCallback: (bounds) =>
                     AppColors.primaryGradient.createShader(
-                      Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-                    ),
+                  Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                ),
                 child: Container(height: 4, width: 100, color: Colors.white),
               ),
               const SizedBox(height: AppSpacing.xxl),
@@ -110,15 +93,19 @@ class ProjectsSection extends StatelessWidget {
               ResponsiveLayout(
                 builder: (context, deviceType) {
                   int crossAxisCount;
+                  double aspectRatio;
                   switch (deviceType) {
                     case DeviceType.mobile:
                       crossAxisCount = 1;
+                      aspectRatio = 1.4;
                       break;
                     case DeviceType.tablet:
                       crossAxisCount = 2;
+                      aspectRatio = 1.1;
                       break;
                     case DeviceType.desktop:
                       crossAxisCount = 2;
+                      aspectRatio = 1.5;
                       break;
                   }
 
@@ -129,7 +116,7 @@ class ProjectsSection extends StatelessWidget {
                       crossAxisCount: crossAxisCount,
                       mainAxisSpacing: AppSpacing.lg,
                       crossAxisSpacing: AppSpacing.lg,
-                      childAspectRatio: 0.85,
+                      childAspectRatio: aspectRatio,
                     ),
                     itemCount: projects.length,
                     itemBuilder: (context, index) {
@@ -140,10 +127,8 @@ class ProjectsSection extends StatelessWidget {
                         technologies: List<String>.from(
                           project['technologies'] as List,
                         ),
-                        imageAssets: List<String>.from(
-                          project['images'] as List,
-                        ),
-                        videoAsset: project['video'] as String?,
+                        coverImage: project['coverImage'] as String,
+                        githubUrl: project['githubUrl'] as String?,
                       );
                     },
                   );

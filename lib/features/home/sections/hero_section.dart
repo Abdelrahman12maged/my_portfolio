@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_spacing.dart';
@@ -128,9 +129,8 @@ class _HeroSectionState extends State<HeroSection>
 
   Widget _buildContent(BuildContext context, {required bool isDesktop}) {
     return Column(
-      crossAxisAlignment: isDesktop
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.center,
+      crossAxisAlignment:
+          isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // Greeting
@@ -150,11 +150,10 @@ class _HeroSectionState extends State<HeroSection>
           ),
           child: Text(
             'Abdelrahman Abdelmaged',
-            style:
-                (isDesktop
-                        ? AppTextStyles.displayMedium
-                        : AppTextStyles.displaySmall)
-                    .copyWith(color: Colors.white),
+            style: (isDesktop
+                    ? AppTextStyles.displayMedium
+                    : AppTextStyles.displaySmall)
+                .copyWith(color: Colors.white),
             textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           ),
         ),
@@ -172,9 +171,8 @@ class _HeroSectionState extends State<HeroSection>
 
         // Location
         Row(
-          mainAxisAlignment: isDesktop
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.center,
+          mainAxisAlignment:
+              isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
           children: [
             const FaIcon(
               FontAwesomeIcons.locationDot,
@@ -189,9 +187,8 @@ class _HeroSectionState extends State<HeroSection>
 
         // Phone Number
         Row(
-          mainAxisAlignment: isDesktop
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.center,
+          mainAxisAlignment:
+              isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
           children: [
             const FaIcon(
               FontAwesomeIcons.phone,
@@ -199,7 +196,7 @@ class _HeroSectionState extends State<HeroSection>
               size: 18,
             ),
             const SizedBox(width: AppSpacing.sm),
-            Text('+20 101 217 0087', style: AppTextStyles.bodyLarge),
+            Text('+20 010 121 700 87', style: AppTextStyles.bodyLarge),
           ],
         ),
         const SizedBox(height: AppSpacing.xxl),
@@ -234,13 +231,11 @@ high-performance, maintainable, and user-friendly applications for iOS and Andro
               label: 'My Resume',
               icon: FontAwesomeIcons.fileArrowDown,
               isPrimary: false,
-              onPressed: () async {
-                const url =
-                    'assets/cv/Abdelrahman Abdelmaged Youssef - Resume (4).pdf';
-                final uri = Uri.parse(url);
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri, mode: LaunchMode.platformDefault);
-                }
+              onPressed: () {
+                html.window.open(
+                  'assets/cv/Abdelrahman%20Abdelmaged%20Youssef%20-%20Resume%20(4).pdf',
+                  '_blank',
+                );
               },
             ),
           ],
@@ -249,18 +244,18 @@ high-performance, maintainable, and user-friendly applications for iOS and Andro
 
         // Social Links
         Row(
-          mainAxisAlignment: isDesktop
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.center,
+          mainAxisAlignment:
+              isDesktop ? MainAxisAlignment.start : MainAxisAlignment.center,
           children: [
             _SocialButton(
               icon: FontAwesomeIcons.linkedinIn,
-              url: 'https://www.linkedin.com/in/abdelrahman-youssef-9a44b027a/',
+              url:
+                  'https://www.linkedin.com/in/abdelrahman-abdelmaged-b09356249/',
             ),
             const SizedBox(width: AppSpacing.md),
             _SocialButton(
               icon: FontAwesomeIcons.github,
-              url: 'https://github.com/abdomaged',
+              url: 'https://github.com/Abdelrahman12maged',
             ),
             const SizedBox(width: AppSpacing.md),
             _SocialButton(

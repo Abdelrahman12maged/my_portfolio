@@ -34,8 +34,8 @@ class ContactSection extends StatelessWidget {
               ShaderMask(
                 shaderCallback: (bounds) =>
                     AppColors.primaryGradient.createShader(
-                      Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-                    ),
+                  Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                ),
                 child: Container(height: 4, width: 100, color: Colors.white),
               ),
               const SizedBox(height: AppSpacing.lg),
@@ -61,35 +61,75 @@ class ContactSection extends StatelessWidget {
                         ),
                         SizedBox(height: AppSpacing.md),
                         _ContactCard(
+                          icon: FontAwesomeIcons.phone,
+                          title: 'Phone',
+                          value: '+20 010 121 700 87',
+                          url: 'tel:+201012170087',
+                        ),
+                        SizedBox(height: AppSpacing.md),
+                        _ContactCard(
                           icon: FontAwesomeIcons.linkedinIn,
                           title: 'LinkedIn',
-                          value: 'Abdelrahman Youssef',
+                          value: 'Abdelrahman Abdelmaged',
                           url:
-                              'https://www.linkedin.com/in/abdelrahman-youssef-9a44b027a/',
+                              'https://www.linkedin.com/in/abdelrahman-abdelmaged-b09356249/',
+                        ),
+                        SizedBox(height: AppSpacing.md),
+                        _ContactCard(
+                          icon: FontAwesomeIcons.github,
+                          title: 'GitHub',
+                          value: 'Abdelrahman12maged',
+                          url: 'https://github.com/Abdelrahman12maged',
                         ),
                       ],
                     );
                   }
 
-                  return Row(
-                    children: const [
-                      Expanded(
-                        child: _ContactCard(
-                          icon: FontAwesomeIcons.envelope,
-                          title: 'Email',
-                          value: 'abdomaged01206@gmail.com',
-                          url: 'mailto:abdomaged01206@gmail.com',
-                        ),
+                  return Column(
+                    children: [
+                      Row(
+                        children: const [
+                          Expanded(
+                            child: _ContactCard(
+                              icon: FontAwesomeIcons.envelope,
+                              title: 'Email',
+                              value: 'abdomaged01206@gmail.com',
+                              url: 'mailto:abdomaged01206@gmail.com',
+                            ),
+                          ),
+                          SizedBox(width: AppSpacing.lg),
+                          Expanded(
+                            child: _ContactCard(
+                              icon: FontAwesomeIcons.phone,
+                              title: 'Phone',
+                              value: '+20 010 121 700 87',
+                              url: 'tel:+201012170087',
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: AppSpacing.lg),
-                      Expanded(
-                        child: _ContactCard(
-                          icon: FontAwesomeIcons.linkedinIn,
-                          title: 'LinkedIn',
-                          value: 'Abdelrahman Youssef',
-                          url:
-                              'https://www.linkedin.com/in/abdelrahman-youssef-9a44b027a/',
-                        ),
+                      const SizedBox(height: AppSpacing.md),
+                      Row(
+                        children: const [
+                          Expanded(
+                            child: _ContactCard(
+                              icon: FontAwesomeIcons.linkedinIn,
+                              title: 'LinkedIn',
+                              value: 'Abdelrahman Abdelmaged',
+                              url:
+                                  'https://www.linkedin.com/in/abdelrahman-abdelmaged-b09356249/',
+                            ),
+                          ),
+                          SizedBox(width: AppSpacing.lg),
+                          Expanded(
+                            child: _ContactCard(
+                              icon: FontAwesomeIcons.github,
+                              title: 'GitHub',
+                              value: 'Abdelrahman12maged',
+                              url: 'https://github.com/Abdelrahman12maged',
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   );
@@ -208,9 +248,8 @@ class _ContactCardState extends State<_ContactCard> {
                 ),
                 FaIcon(
                   FontAwesomeIcons.arrowRight,
-                  color: _isHovered
-                      ? AppColors.primary
-                      : AppColors.textTertiary,
+                  color:
+                      _isHovered ? AppColors.primary : AppColors.textTertiary,
                   size: 16,
                 ),
               ],
