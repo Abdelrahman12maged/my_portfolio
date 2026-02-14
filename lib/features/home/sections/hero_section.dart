@@ -103,28 +103,29 @@ class _HeroSectionState extends State<HeroSection>
 
   Widget _buildProfileImage({required double size}) {
     return Hero(
-      tag: 'profile_image',
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: AppColors.primaryGradient,
-          boxShadow: AppColors.primaryShadow,
-        ),
-        padding: const EdgeInsets.all(6),
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.surface,
-            image: const DecorationImage(
-              image: AssetImage('assets/imageprofile.png'),
-              fit: BoxFit.fill,
+        tag: 'profile_image',
+        child: _FloatingWidget(
+          child: Container(
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: AppColors.primaryGradient,
+              boxShadow: AppColors.primaryShadow,
+            ),
+            padding: const EdgeInsets.all(6),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.surface,
+                image: const DecorationImage(
+                  image: AssetImage('assets/imageprofile.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   Widget _buildContent(BuildContext context, {required bool isDesktop}) {
@@ -136,27 +137,24 @@ class _HeroSectionState extends State<HeroSection>
         // Greeting
         const SizedBox(height: AppSpacing.xxl),
         Text(
-          'Hi, I\'m',
-          style: isDesktop
-              ? AppTextStyles.headlineMedium
-              : AppTextStyles.headlineSmall,
+          'Hello, I am',
+          style: AppTextStyles.titleMedium.copyWith(
+            color: AppColors.primary,
+            letterSpacing: 1.5,
+          ),
         ),
         const SizedBox(height: AppSpacing.sm),
 
-        // Name with gradient
-        ShaderMask(
-          shaderCallback: (bounds) => AppColors.primaryGradient.createShader(
-            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+        // Animated Name (Typewriter + Gradient)
+        _TypewriterText(
+          text: 'Abdelrahman Abdelmaged',
+          style: AppTextStyles.displayMedium.copyWith(
+            fontWeight: FontWeight.bold,
+            height: 1.2,
           ),
-          child: Text(
-            'Abdelrahman Abdelmaged',
-            style: (isDesktop
-                    ? AppTextStyles.displayMedium
-                    : AppTextStyles.displaySmall)
-                .copyWith(color: Colors.white),
-            textAlign: isDesktop ? TextAlign.left : TextAlign.center,
-          ),
+          isDesktop: isDesktop,
         ),
+
         const SizedBox(height: AppSpacing.md),
 
         // Title
@@ -376,6 +374,102 @@ class _SocialButtonState extends State<_SocialButton> {
             child: FaIcon(widget.icon, size: 20, color: AppColors.textPrimary),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _FloatingWidget extends StatefulWidget {
+  final Widget child;
+  const _FloatingWidget({required this.child});
+
+  @override
+  State<_FloatingWidget> createState() => _FloatingWidgetState();
+}
+
+class _FloatingWidgetState extends State<_FloatingWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: 0, end: 15).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOutSine),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Transform.translate(
+          offset: Offset(0, _animation.value),
+          child: child,
+        );
+      },
+      child: widget.child,
+    );
+  }
+}
+
+class _TypewriterText extends StatefulWidget {
+  final String text;
+  final TextStyle style;
+  final bool isDesktop;
+
+  const _TypewriterText({
+    required this.text,
+    required this.style,
+    required this.isDesktop,
+  });
+
+  @override
+  State<_TypewriterText> createState() => _TypewriterTextState();
+}
+
+class _TypewriterTextState extends State<_TypewriterText> {
+  String _displayedText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _startTyping();
+  }
+
+  void _startTyping() async {
+    for (int i = 0; i < widget.text.length; i++) {
+      if (!mounted) return;
+      await Future.delayed(const Duration(milliseconds: 100));
+      setState(() {
+        _displayedText = widget.text.substring(0, i + 1);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      shaderCallback: (bounds) => AppColors.primaryGradient.createShader(
+        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+      ),
+      child: Text(
+        _displayedText,
+        style: widget.style.copyWith(color: Colors.white),
+        textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
       ),
     );
   }

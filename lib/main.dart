@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/portfolio_home.dart';
+import 'features/home/widgets/loading_screen.dart';
 
 void main() {
   runApp(const PortfolioApp());
@@ -15,7 +15,7 @@ class PortfolioApp extends StatelessWidget {
       title: 'Abdelrahman Abdelmaged - Flutter Developer',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const PortfolioHome(),
+      home: const LoadingScreen(),
     );
   }
 }
