@@ -78,7 +78,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
                 child: Container(
                   key: _sectionKeys[0],
                   child: HeroSection(
-                    onProjectsPressed: () => _scrollToSection(3),
+                    onProjectsPressed: () => _scrollToSection(2),
                   ),
                 ),
               ),
@@ -121,7 +121,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
           if (!ResponsiveLayout.isMobile(context))
             Positioned(
               top: 0,
-            left:0,
+              left: 0,
               right: 0,
               child: PortfolioNavigationBar(
                 onNavigate: _scrollToSection,

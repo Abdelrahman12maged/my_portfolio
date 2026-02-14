@@ -46,7 +46,7 @@ class PortfolioNavigationBar extends StatelessWidget {
         vertical: AppSpacing.md,
       ),
       decoration: BoxDecoration(
-       // color: AppColors.surface.withOpacity(0.95),
+        // color: AppColors.surface.withOpacity(0.95),
         border: Border(
           bottom: BorderSide(color: AppColors.glassBorder, width: 1),
         ),
@@ -85,7 +85,7 @@ class PortfolioNavigationBar extends StatelessWidget {
 
   Widget _buildMobileNav(BuildContext context) {
     return AppBar(
-     // backgroundColor: AppColors.surface.withOpacity(0.95),
+      // backgroundColor: AppColors.surface.withOpacity(0.95),
       elevation: 0,
       leading: Builder(
         builder: (context) {
@@ -173,7 +173,6 @@ class MobileDrawer extends StatelessWidget {
 
   static const List<String> _navItems = [
     'Home',
-    
     'Skills',
     'Projects',
     'Education',
@@ -182,7 +181,6 @@ class MobileDrawer extends StatelessWidget {
 
   static const List<IconData> _navIcons = [
     FontAwesomeIcons.house,
-    FontAwesomeIcons.user,
     FontAwesomeIcons.code,
     FontAwesomeIcons.briefcase,
     FontAwesomeIcons.graduationCap,
@@ -192,7 +190,7 @@ class MobileDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-   //   backgroundColor: AppColors.surface,
+      //   backgroundColor: AppColors.surface,
       child: SafeArea(
         child: Column(
           children: [
@@ -253,9 +251,8 @@ class MobileDrawer extends StatelessWidget {
                         color: isActive
                             ? AppColors.primary
                             : AppColors.textSecondary,
-                        fontWeight: isActive
-                            ? FontWeight.w600
-                            : FontWeight.w400,
+                        fontWeight:
+                            isActive ? FontWeight.w600 : FontWeight.w400,
                       ),
                     ),
                     selected: isActive,
