@@ -231,7 +231,7 @@ high-performance, maintainable, and user-friendly applications for iOS and Andro
               isPrimary: false,
               onPressed: () {
                 html.window.open(
-                  'assets/cv/Abdelrahman%20Abdelmaged%20Youssef%20-%20Resume%20(4).pdf',
+                  'assets/cv/resume.pdf',
                   '_blank',
                 );
               },
