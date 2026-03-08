@@ -230,10 +230,13 @@ high-performance, maintainable, and user-friendly applications for iOS and Andro
               icon: FontAwesomeIcons.fileArrowDown,
               isPrimary: false,
               onPressed: () {
-                html.window.open(
-                  'assets/cv/resume.pdf',
-                  '_blank',
-                );
+                final anchor = html.AnchorElement(
+                  href: 'assets/assets/cv/resume.pdf',
+                )
+                  ..setAttribute(
+                      'download', 'Abdelrahman_Abdelmaged_Resume.pdf')
+                  ..setAttribute('target', '_blank')
+                  ..click();
               },
             ),
           ],
