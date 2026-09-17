@@ -68,6 +68,7 @@ flutter:
     - assets/images/Rozewailimages/
     - assets/images/fix_notify_images/
     - assets/images/hcc_demo/
+    - assets/images/waslni/
     - assets/cv/
 
   # An image asset can refer to one or more resolution-specific "variants", see

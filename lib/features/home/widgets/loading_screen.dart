@@ -43,6 +43,7 @@ class _LoadingScreenState extends State<LoadingScreen>
     // List of critical assets to precache
     final assets = [
       'assets/imageprofile.png',
+      'assets/images/waslni/app-showcase-mockup.png',
       'assets/images/Khadamaty_images/1.png',
       'assets/images/hcc_demo/1.png',
       'assets/images/Rozewailimages/unnamed.webp',

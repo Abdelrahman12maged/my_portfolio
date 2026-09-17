@@ -12,6 +12,20 @@ class ProjectsSection extends StatelessWidget {
   // Project data
   static const List<Map<String, dynamic>> projects = [
     {
+      'title': 'Waslni',
+      'description':
+          'Smart ride-hailing and carpooling platform featuring dynamic fare bidding, 3D turn-by-turn navigation, sub-second GPS live tracking via Firestore, real-time in-app chat, and geofencing. Built with Clean Architecture & BLoC.',
+      'technologies': [
+        'Flutter',
+        'Clean Architecture',
+        'Bloc/Cubit',
+        'Google Maps',
+        'Firebase',
+      ],
+      'coverImage': 'assets/images/waslni/app-showcase-mockup.png',
+      'githubUrl': 'https://github.com/Abdelrahman12maged/waslni_dev',
+    },
+    {
       'title': 'Khadmaty',
       'description':
           'Full-stack marketplace connecting customers with local service providers. Clean Architecture with 3-layer separation, Repository Pattern, Dependency Injection using GetIt, and dual service types with Arabic/English localization.',
