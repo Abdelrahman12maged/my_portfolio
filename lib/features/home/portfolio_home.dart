@@ -8,7 +8,7 @@ import 'sections/education_section.dart';
 import 'sections/contact_section.dart';
 import 'widgets/navigation_bar.dart';
 
-/// Main portfolio home page
+/// Main portfolio home page with atmospheric background lighting & scroll management
 class PortfolioHome extends StatefulWidget {
   const PortfolioHome({super.key});
 
@@ -19,11 +19,28 @@ class PortfolioHome extends StatefulWidget {
 class _PortfolioHomeState extends State<PortfolioHome> {
   final ScrollController _scrollController = ScrollController();
   int _currentSection = 0;
+  bool _showBackToTop = false;
 
-  final List<GlobalKey> _sectionKeys = List.generate(6, (index) => GlobalKey());
+  final List<GlobalKey> _sectionKeys = List.generate(5, (index) => GlobalKey());
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final offset = _scrollController.offset;
+    if (offset > 400 && !_showBackToTop) {
+      setState(() => _showBackToTop = true);
+    } else if (offset <= 400 && _showBackToTop) {
+      setState(() => _showBackToTop = false);
+    }
+  }
 
   @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }
@@ -34,7 +51,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
       final context = _sectionKeys[index].currentContext!;
       Scrollable.ensureVisible(
         context,
-        duration: const Duration(milliseconds: 800),
+        duration: const Duration(milliseconds: 750),
         curve: Curves.easeInOutCubic,
       );
       setState(() {
@@ -43,36 +60,105 @@ class _PortfolioHomeState extends State<PortfolioHome> {
     }
   }
 
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 750),
+      curve: Curves.easeInOutCubic,
+    );
+    setState(() => _currentSection = 0);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveLayout.isMobile(context);
+
     return Scaffold(
       backgroundColor: AppColors.background,
-      drawer: ResponsiveLayout.isMobile(context)
+      drawer: isMobile
           ? MobileDrawer(
               onNavigate: _scrollToSection,
               currentIndex: _currentSection,
             )
           : null,
+      floatingActionButton: _showBackToTop
+          ? FloatingActionButton.small(
+              onPressed: _scrollToTop,
+              backgroundColor: AppColors.primary,
+              foregroundColor: const Color(0xFF070B14),
+              elevation: 4,
+              tooltip: 'Back to top',
+              child: const Icon(Icons.arrow_upward_rounded, size: 18),
+            )
+          : null,
       body: Stack(
         children: [
-          // Background gradient overlay
-          Container(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                center: const Alignment(0.0, -0.5),
-                radius: 1.5,
-                colors: [
-                  AppColors.primary.withOpacity(0.05),
-                  AppColors.background,
-                ],
+          // Background Atmospheric Mesh Lighting
+          Positioned(
+            top: -150,
+            left: -150,
+            child: Container(
+              width: 500,
+              height: 500,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    AppColors.primary.withValues(alpha: 0.12),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 400,
+            right: -200,
+            child: Container(
+              width: 600,
+              height: 600,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    AppColors.accentIndigo.withValues(alpha: 0.1),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 200,
+            left: -100,
+            child: Container(
+              width: 500,
+              height: 500,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    AppColors.accentViolet.withValues(alpha: 0.08),
+                    Colors.transparent,
+                  ],
+                ),
               ),
             ),
           ),
 
-          // Main content
+          // Main scrollable content
           CustomScrollView(
             controller: _scrollController,
             slivers: [
+              // Mobile Top Navigation Bar
+              if (isMobile)
+                SliverToBoxAdapter(
+                  child: PortfolioNavigationBar(
+                    onNavigate: _scrollToSection,
+                    currentIndex: _currentSection,
+                  ),
+                ),
+
               // Hero Section
               SliverToBoxAdapter(
                 child: Container(
@@ -117,8 +203,8 @@ class _PortfolioHomeState extends State<PortfolioHome> {
             ],
           ),
 
-          // Floating Navigation Bar (Overlay at top)
-          if (!ResponsiveLayout.isMobile(context))
+          // Floating Desktop Island Navigation Bar
+          if (!isMobile)
             Positioned(
               top: 0,
               left: 0,

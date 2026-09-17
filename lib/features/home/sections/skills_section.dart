@@ -5,61 +5,55 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/widgets/responsive_layout.dart';
 
-/// Enhanced skills section with premium, modern design
+/// Enhanced skills matrix section with modern glass cards & categorized skills
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
   static const Map<String, List<Map<String, dynamic>>> skillCategories = {
     'Mobile Development': [
-      {'name': 'Flutter', 'icon': FontAwesomeIcons.mobile},
+      {'name': 'Flutter 3.x', 'icon': FontAwesomeIcons.flutter},
       {'name': 'Dart', 'icon': FontAwesomeIcons.code},
-      {
-        'name': 'Responsive & Adaptive UI',
-        'icon': FontAwesomeIcons.mobileScreen
-      },
+      {'name': 'Responsive & Adaptive UI', 'icon': FontAwesomeIcons.mobileScreen},
       {'name': 'Localization (AR & EN)', 'icon': FontAwesomeIcons.language},
-      {'name': 'Performance Optimization', 'icon': FontAwesomeIcons.gaugeHigh},
+      {'name': 'Performance & Profiling', 'icon': FontAwesomeIcons.gaugeHigh},
     ],
     'Architecture & Patterns': [
       {'name': 'Clean Architecture', 'icon': FontAwesomeIcons.layerGroup},
       {'name': 'SOLID Principles', 'icon': FontAwesomeIcons.shapes},
-      {'name': 'MVC / MVVM', 'icon': FontAwesomeIcons.cubes},
-      {'name': 'Design Patterns', 'icon': FontAwesomeIcons.sitemap},
-      {'name': 'Dependency Injection', 'icon': FontAwesomeIcons.plug},
+      {'name': 'Repository Pattern', 'icon': FontAwesomeIcons.cubes},
+      {'name': 'BLoC & Cubit State Mgmt', 'icon': FontAwesomeIcons.arrowsRotate},
+      {'name': 'Dependency Injection (GetIt)', 'icon': FontAwesomeIcons.plug},
     ],
-    'State Management': [
-      {'name': 'Bloc / Cubit', 'icon': FontAwesomeIcons.sitemap},
-      {'name': 'Provider', 'icon': FontAwesomeIcons.database},
-      {'name': 'GetX', 'icon': FontAwesomeIcons.bolt},
+    'Backend & Cloud Services': [
+      {'name': 'Firebase (Auth, Firestore)', 'icon': FontAwesomeIcons.fire},
+      {'name': 'Cloud Messaging (FCM)', 'icon': FontAwesomeIcons.bell},
+      {'name': 'REST APIs & Dio Client', 'icon': FontAwesomeIcons.cloudArrowDown},
+      {'name': 'Offline Caching (Hive)', 'icon': FontAwesomeIcons.database},
+      {'name': 'JSON Serialization', 'icon': FontAwesomeIcons.fileCode},
     ],
-    'Backend & APIs': [
-      {
-        'name': 'Firebase (Auth, Firestore, FCM)',
-        'icon': FontAwesomeIcons.fire
-      },
-      {'name': 'REST APIs', 'icon': FontAwesomeIcons.cloudArrowDown},
-      {
-        'name': 'Google Maps Integration',
-        'icon': FontAwesomeIcons.mapLocationDot
-      },
-      {'name': 'Payment Integration', 'icon': FontAwesomeIcons.creditCard},
+    'Mapping & Telemetry': [
+      {'name': 'Google Maps SDK', 'icon': FontAwesomeIcons.mapLocationDot},
+      {'name': 'OSRM Dual Routing Engine', 'icon': FontAwesomeIcons.route},
+      {'name': 'GPS Live Coordinate Stream', 'icon': FontAwesomeIcons.locationArrow},
+      {'name': 'Automated Geofencing', 'icon': FontAwesomeIcons.crosshairs},
+      {'name': 'Platform Channels (Native SMS)', 'icon': FontAwesomeIcons.terminal},
     ],
-    'Tools & Technologies': [
+    'Tools & Workflow': [
       {'name': 'Git & GitHub', 'icon': FontAwesomeIcons.github},
-      {'name': 'Android Studio / VS Code', 'icon': FontAwesomeIcons.laptop},
-      {'name': 'Postman', 'icon': FontAwesomeIcons.paperPlane},
-      {'name': 'Figma', 'icon': FontAwesomeIcons.paintbrush},
+      {'name': 'Android Studio & VS Code', 'icon': FontAwesomeIcons.laptopCode},
+      {'name': 'Postman API Testing', 'icon': FontAwesomeIcons.paperPlane},
+      {'name': 'Figma UI Translation', 'icon': FontAwesomeIcons.paintbrush},
       {'name': 'Google Play Console', 'icon': FontAwesomeIcons.googlePlay},
     ],
   };
 
-  // Category accent colors for visual distinction
+  // Modern accent colors
   static const List<Color> _categoryColors = [
-    Color(0xFF00C8FF), // Cyan
-    Color(0xFF7B61FF), // Purple
-    Color(0xFFFF6B6B), // Coral
-    Color(0xFF00D68F), // Green
-    Color(0xFFFFAA00), // Amber
+    Color(0xFF00D2FF), // Electric Cyan
+    Color(0xFF818CF8), // Modern Indigo
+    Color(0xFF10B981), // Emerald
+    Color(0xFFF59E0B), // Amber
+    Color(0xFFA855F7), // Purple
   ];
 
   @override
@@ -76,30 +70,56 @@ class SkillsSection extends StatelessWidget {
           ),
           child: Column(
             children: [
-              // Section Title
-              Text(
-                'Technical Skills',
-                style: AppTextStyles.displaySmall,
-                textAlign: TextAlign.center,
+              // Section Header
+              Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: AppColors.primary.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Text(
+                      'TECHNICAL EXPERTISE',
+                      style: AppTextStyles.labelSmall.copyWith(
+                        color: AppColors.primary,
+                        letterSpacing: 1.5,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Skills & Architecture Matrix',
+                    style: AppTextStyles.displaySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 12),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 620),
+                    child: Text(
+                      'Technologies, architectural paradigms, and development tools applied in building production applications.',
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: AppSpacing.md),
 
-              ShaderMask(
-                shaderCallback: (bounds) =>
-                    AppColors.primaryGradient.createShader(
-                  Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-                ),
-                child: Container(height: 4, width: 100, color: Colors.white),
-              ),
-              const SizedBox(height: AppSpacing.xxl),
+              const SizedBox(height: 50),
 
-              // Skill Categories - Wrap layout for better flexibility
+              // Skill Categories
               ResponsiveLayout(
                 builder: (context, deviceType) {
                   final entries = skillCategories.entries.toList();
                   return Wrap(
-                    spacing: AppSpacing.lg,
-                    runSpacing: AppSpacing.lg,
+                    spacing: AppSpacing.xl,
+                    runSpacing: AppSpacing.xl,
                     alignment: WrapAlignment.center,
                     children: entries.asMap().entries.map((mapEntry) {
                       final index = mapEntry.key;
@@ -146,153 +166,120 @@ class _SkillCategoryCard extends StatefulWidget {
   State<_SkillCategoryCard> createState() => _SkillCategoryCardState();
 }
 
-class _SkillCategoryCardState extends State<_SkillCategoryCard>
-    with SingleTickerProviderStateMixin {
+class _SkillCategoryCardState extends State<_SkillCategoryCard> {
   bool _isHovered = false;
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 600),
-      vsync: this,
-    );
-
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOutBack,
-    );
-
-    // Staggered animation
-    Future.delayed(Duration(milliseconds: widget.index * 150), () {
-      if (mounted) {
-        _controller.forward();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final accent = widget.accentColor;
 
-    return ScaleTransition(
-      scale: _animation,
-      child: MouseRegion(
-        onEnter: (_) => setState(() => _isHovered = true),
-        onExit: (_) => setState(() => _isHovered = false),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOutCubic,
-          transform: Matrix4.identity()
-            ..translate(0.0, _isHovered ? -6.0 : 0.0),
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          decoration: BoxDecoration(
-            color: AppColors.surface,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOutCubic,
+        transform: Matrix4.translationValues(
+          0.0,
+          _isHovered ? -5.0 : 0.0,
+          0.0,
+        ),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: const Color(0xFF0F172A).withValues(alpha: 0.75),
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(
+            color: _isHovered
+                ? accent.withValues(alpha: 0.6)
+                : Colors.white.withValues(alpha: 0.08),
+            width: _isHovered ? 1.5 : 1.0,
+          ),
+          boxShadow: [
+            BoxShadow(
               color: _isHovered
-                  ? accent.withValues(alpha: 0.6)
-                  : AppColors.glassBorder,
-              width: 1.5,
+                  ? accent.withValues(alpha: 0.2)
+                  : Colors.black.withValues(alpha: 0.35),
+              blurRadius: _isHovered ? 26 : 16,
+              offset: const Offset(0, 8),
             ),
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: accent.withValues(alpha: 0.25),
-                      blurRadius: 24,
-                      spreadRadius: 2,
-                      offset: const Offset(0, 8),
-                    ),
-                  ]
-                : [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.2),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Category Header
-              Row(
-                children: [
-                  // Accent icon container
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      gradient: _isHovered
-                          ? LinearGradient(
-                              colors: [accent, accent.withValues(alpha: 0.7)],
-                            )
-                          : null,
-                      color: _isHovered ? null : accent.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: FaIcon(
-                      _getCategoryIcon(widget.category),
-                      color: _isHovered ? Colors.white : accent,
-                      size: 22,
-                    ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Category Header
+            Row(
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: _isHovered
+                        ? LinearGradient(
+                            colors: [accent, accent.withValues(alpha: 0.7)],
+                          )
+                        : null,
+                    color: _isHovered ? null : accent.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                  const SizedBox(width: AppSpacing.md),
-                  Expanded(
-                    child: Text(
-                      widget.category,
-                      style: AppTextStyles.titleMedium.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  child: FaIcon(
+                    _getCategoryIcon(widget.category),
+                    color: _isHovered ? const Color(0xFF070B14) : accent,
+                    size: 20,
                   ),
-                ],
-              ),
-
-              // Accent divider line
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 400),
-                      height: 2,
-                      width: _isHovered ? constraints.maxWidth : 60,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [accent, accent.withValues(alpha: 0.0)],
-                        ),
-                        borderRadius: BorderRadius.circular(1),
-                      ),
-                    );
-                  },
                 ),
-              ),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Text(
+                    widget.category,
+                    style: AppTextStyles.titleMedium.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
 
-              // Skills chips
-              Wrap(
-                spacing: AppSpacing.sm,
-                runSpacing: AppSpacing.sm,
-                children: widget.skills.map((skill) {
-                  return _SkillChip(
-                    name: skill['name'] as String,
-                    icon: skill['icon'] as IconData,
-                    accentColor: accent,
-                    isHovered: _isHovered,
+            // Accent divider line
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 18),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final targetWidth = constraints.maxWidth.isFinite
+                      ? constraints.maxWidth
+                      : 260.0;
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 350),
+                    curve: Curves.easeOutCubic,
+                    height: 2,
+                    width: _isHovered ? targetWidth : 48.0,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [accent, accent.withValues(alpha: 0.0)],
+                      ),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
                   );
-                }).toList(),
+                },
               ),
-            ],
-          ),
+            ),
+
+            // Skills chips
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: widget.skills.map((skill) {
+                return _SkillChip(
+                  name: skill['name'] as String,
+                  icon: skill['icon'] as IconData,
+                  accentColor: accent,
+                  isHovered: _isHovered,
+                );
+              }).toList(),
+            ),
+          ],
         ),
       ),
     );
@@ -301,14 +288,14 @@ class _SkillCategoryCardState extends State<_SkillCategoryCard>
   IconData _getCategoryIcon(String category) {
     switch (category) {
       case 'Mobile Development':
-        return FontAwesomeIcons.mobile;
+        return FontAwesomeIcons.mobileScreen;
       case 'Architecture & Patterns':
         return FontAwesomeIcons.layerGroup;
-      case 'State Management':
-        return FontAwesomeIcons.arrowsRotate;
-      case 'Backend & APIs':
+      case 'Backend & Cloud Services':
         return FontAwesomeIcons.server;
-      case 'Tools & Technologies':
+      case 'Mapping & Telemetry':
+        return FontAwesomeIcons.mapLocationDot;
+      case 'Tools & Workflow':
         return FontAwesomeIcons.toolbox;
       default:
         return FontAwesomeIcons.code;
@@ -332,17 +319,17 @@ class _SkillChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 250),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      duration: const Duration(milliseconds: 200),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
         color: isHovered
             ? accentColor.withValues(alpha: 0.12)
-            : AppColors.surfaceLight,
+            : const Color(0xFF162033).withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isHovered
-              ? accentColor.withValues(alpha: 0.35)
-              : Colors.transparent,
+              ? accentColor.withValues(alpha: 0.4)
+              : Colors.white.withValues(alpha: 0.06),
         ),
       ),
       child: Row(
@@ -350,16 +337,15 @@ class _SkillChip extends StatelessWidget {
         children: [
           FaIcon(
             icon,
-            size: 14,
+            size: 13,
             color: isHovered ? accentColor : AppColors.textTertiary,
           ),
           const SizedBox(width: 8),
           Text(
             name,
             style: AppTextStyles.bodySmall.copyWith(
-              color:
-                  isHovered ? AppColors.textPrimary : AppColors.textSecondary,
-              fontWeight: isHovered ? FontWeight.w500 : FontWeight.w400,
+              color: isHovered ? Colors.white : AppColors.textSecondary,
+              fontWeight: isHovered ? FontWeight.w600 : FontWeight.w500,
             ),
           ),
         ],

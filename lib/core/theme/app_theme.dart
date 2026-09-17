@@ -6,90 +6,91 @@ import '../constants/app_colors.dart';
 class AppTheme {
   static ThemeData get darkTheme {
     return ThemeData(
+      useMaterial3: true,
       brightness: Brightness.dark,
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.background,
       colorScheme: const ColorScheme.dark(
         primary: AppColors.primary,
-        secondary: AppColors.primaryLight,
+        secondary: AppColors.accentIndigo,
         surface: AppColors.surface,
       ),
 
-      // Text Theme
+      // Text Theme using Plus Jakarta Sans
       textTheme: TextTheme(
-        displayLarge: GoogleFonts.poppins(
-          fontSize: 72,
-          fontWeight: FontWeight.bold,
+        displayLarge: GoogleFonts.plusJakartaSans(
+          fontSize: 68,
+          fontWeight: FontWeight.w800,
           color: AppColors.textPrimary,
         ),
-        displayMedium: GoogleFonts.poppins(
-          fontSize: 56,
-          fontWeight: FontWeight.bold,
+        displayMedium: GoogleFonts.plusJakartaSans(
+          fontSize: 52,
+          fontWeight: FontWeight.w800,
           color: AppColors.textPrimary,
         ),
-        displaySmall: GoogleFonts.poppins(
-          fontSize: 44,
-          fontWeight: FontWeight.bold,
+        displaySmall: GoogleFonts.plusJakartaSans(
+          fontSize: 38,
+          fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
-        headlineLarge: GoogleFonts.poppins(
-          fontSize: 36,
+        headlineLarge: GoogleFonts.plusJakartaSans(
+          fontSize: 32,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        headlineMedium: GoogleFonts.plusJakartaSans(
+          fontSize: 26,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        headlineMedium: GoogleFonts.poppins(
-          fontSize: 28,
+        headlineSmall: GoogleFonts.plusJakartaSans(
+          fontSize: 22,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        headlineSmall: GoogleFonts.poppins(
-          fontSize: 24,
-          fontWeight: FontWeight.w500,
-          color: AppColors.textPrimary,
-        ),
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: GoogleFonts.plusJakartaSans(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        titleMedium: GoogleFonts.poppins(
-          fontSize: 18,
+        titleMedium: GoogleFonts.plusJakartaSans(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+          color: AppColors.textPrimary,
+        ),
+        titleSmall: GoogleFonts.plusJakartaSans(
+          fontSize: 15,
           fontWeight: FontWeight.w500,
           color: AppColors.textPrimary,
         ),
-        titleSmall: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: AppColors.textPrimary,
-        ),
-        bodyLarge: GoogleFonts.poppins(
-          fontSize: 18,
+        bodyLarge: GoogleFonts.plusJakartaSans(
+          fontSize: 17,
           fontWeight: FontWeight.w400,
           color: AppColors.textSecondary,
         ),
-        bodyMedium: GoogleFonts.poppins(
-          fontSize: 16,
+        bodyMedium: GoogleFonts.plusJakartaSans(
+          fontSize: 15,
           fontWeight: FontWeight.w400,
           color: AppColors.textSecondary,
         ),
-        bodySmall: GoogleFonts.poppins(
+        bodySmall: GoogleFonts.plusJakartaSans(
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
+          color: AppColors.textSecondary,
+        ),
+        labelLarge: GoogleFonts.plusJakartaSans(
           fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: AppColors.textSecondary,
-        ),
-        labelLarge: GoogleFonts.poppins(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        labelMedium: GoogleFonts.poppins(
+        labelMedium: GoogleFonts.plusJakartaSans(
           fontSize: 12,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        labelSmall: GoogleFonts.poppins(
+        labelSmall: GoogleFonts.plusJakartaSans(
           fontSize: 11,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           color: AppColors.textSecondary,
         ),
       ),
@@ -102,21 +103,28 @@ class AppTheme {
       ),
 
       // Card Theme
-      cardTheme: const CardThemeData(color: AppColors.surface, elevation: 0),
+      cardTheme: CardThemeData(
+        color: AppColors.surface,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: AppColors.glassBorder),
+        ),
+      ),
 
       // Elevated Button Theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: const Color(0xFF070B14),
           elevation: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+          textStyle: GoogleFonts.plusJakartaSans(
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),
@@ -125,37 +133,15 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primary,
-          side: const BorderSide(color: AppColors.primary, width: 2),
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          side: const BorderSide(color: AppColors.primary, width: 1.5),
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: GoogleFonts.poppins(
-            fontSize: 16,
+          textStyle: GoogleFonts.plusJakartaSans(
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
-        ),
-      ),
-
-      // Input Decoration Theme
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: AppColors.surface,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.glassBorder),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.glassBorder),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: AppColors.primary, width: 2),
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 16,
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
-/// Reusable glassmorphic container widget
+/// Modern reusable glassmorphic container widget with blur and smooth borders
 class GlassmorphicContainer extends StatelessWidget {
   final Widget child;
   final double? width;
@@ -12,6 +12,7 @@ class GlassmorphicContainer extends StatelessWidget {
   final double borderRadius;
   final double blur;
   final Color? backgroundColor;
+  final Gradient? gradient;
   final Border? border;
   final List<BoxShadow>? boxShadow;
 
@@ -23,8 +24,9 @@ class GlassmorphicContainer extends StatelessWidget {
     this.padding,
     this.margin,
     this.borderRadius = 16,
-    this.blur = 10,
+    this.blur = 12,
     this.backgroundColor,
+    this.gradient,
     this.border,
     this.boxShadow,
   });
@@ -46,13 +48,15 @@ class GlassmorphicContainer extends StatelessWidget {
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
-              gradient: backgroundColor != null
-                  ? null
-                  : AppColors.glassGradient,
+              gradient: gradient ??
+                  (backgroundColor != null ? null : AppColors.glassGradient),
               color: backgroundColor,
               borderRadius: BorderRadius.circular(borderRadius),
-              border:
-                  border ?? Border.all(color: AppColors.glassBorder, width: 1),
+              border: border ??
+                  Border.all(
+                    color: AppColors.glassBorder,
+                    width: 1,
+                  ),
             ),
             child: child,
           ),

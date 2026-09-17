@@ -2,132 +2,134 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
-/// Typography system using Poppins font
+/// Modern typography system using Plus Jakarta Sans
 class AppTextStyles {
-  // Display Styles (Large headings)
-  static TextStyle get displayLarge => GoogleFonts.poppins(
-    fontSize: 72,
-    fontWeight: FontWeight.bold,
+  // Display Styles (Hero & section headers)
+  static TextStyle get displayLarge => GoogleFonts.plusJakartaSans(
+    fontSize: 68,
+    fontWeight: FontWeight.w800,
     color: AppColors.textPrimary,
     height: 1.1,
     letterSpacing: -1.5,
   );
 
-  static TextStyle get displayMedium => GoogleFonts.poppins(
-    fontSize: 56,
-    fontWeight: FontWeight.bold,
+  static TextStyle get displayMedium => GoogleFonts.plusJakartaSans(
+    fontSize: 52,
+    fontWeight: FontWeight.w800,
     color: AppColors.textPrimary,
-    height: 1.2,
-    letterSpacing: -1,
+    height: 1.15,
+    letterSpacing: -1.0,
   );
 
-  static TextStyle get displaySmall => GoogleFonts.poppins(
-    fontSize: 44,
-    fontWeight: FontWeight.bold,
+  static TextStyle get displaySmall => GoogleFonts.plusJakartaSans(
+    fontSize: 38,
+    fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
     height: 1.2,
+    letterSpacing: -0.5,
   );
 
   // Headline Styles
-  static TextStyle get headlineLarge => GoogleFonts.poppins(
-    fontSize: 36,
+  static TextStyle get headlineLarge => GoogleFonts.plusJakartaSans(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textPrimary,
+    height: 1.25,
+    letterSpacing: -0.5,
+  );
+
+  static TextStyle get headlineMedium => GoogleFonts.plusJakartaSans(
+    fontSize: 26,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
     height: 1.3,
   );
 
-  static TextStyle get headlineMedium => GoogleFonts.poppins(
-    fontSize: 28,
+  static TextStyle get headlineSmall => GoogleFonts.plusJakartaSans(
+    fontSize: 22,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
-    height: 1.3,
-  );
-
-  static TextStyle get headlineSmall => GoogleFonts.poppins(
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
     color: AppColors.textPrimary,
     height: 1.3,
   );
 
   // Title Styles
-  static TextStyle get titleLarge => GoogleFonts.poppins(
+  static TextStyle get titleLarge => GoogleFonts.plusJakartaSans(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
     height: 1.4,
   );
 
-  static TextStyle get titleMedium => GoogleFonts.poppins(
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
+  static TextStyle get titleMedium => GoogleFonts.plusJakartaSans(
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
     height: 1.4,
   );
 
-  static TextStyle get titleSmall => GoogleFonts.poppins(
-    fontSize: 16,
+  static TextStyle get titleSmall => GoogleFonts.plusJakartaSans(
+    fontSize: 15,
     fontWeight: FontWeight.w500,
     color: AppColors.textPrimary,
     height: 1.4,
   );
 
   // Body Styles
-  static TextStyle get bodyLarge => GoogleFonts.poppins(
-    fontSize: 18,
+  static TextStyle get bodyLarge => GoogleFonts.plusJakartaSans(
+    fontSize: 17,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+    height: 1.65,
+  );
+
+  static TextStyle get bodyMedium => GoogleFonts.plusJakartaSans(
+    fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
     height: 1.6,
   );
 
-  static TextStyle get bodyMedium => GoogleFonts.poppins(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
-    height: 1.6,
-  );
-
-  static TextStyle get bodySmall => GoogleFonts.poppins(
-    fontSize: 14,
+  static TextStyle get bodySmall => GoogleFonts.plusJakartaSans(
+    fontSize: 13,
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
     height: 1.5,
   );
 
   // Label Styles
-  static TextStyle get labelLarge => GoogleFonts.poppins(
+  static TextStyle get labelLarge => GoogleFonts.plusJakartaSans(
     fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
   );
 
-  static TextStyle get labelMedium => GoogleFonts.poppins(
+  static TextStyle get labelMedium => GoogleFonts.plusJakartaSans(
     fontSize: 12,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
   );
 
-  static TextStyle get labelSmall => GoogleFonts.poppins(
+  static TextStyle get labelSmall => GoogleFonts.plusJakartaSans(
     fontSize: 11,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     color: AppColors.textSecondary,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
   );
 
   // Button Styles
-  static TextStyle get button => GoogleFonts.poppins(
-    fontSize: 16,
+  static TextStyle get button => GoogleFonts.plusJakartaSans(
+    fontSize: 15,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
-    letterSpacing: 0.5,
+    color: Colors.white,
+    letterSpacing: 0.3,
   );
 
   // Special Accent Text
-  static TextStyle get accent => GoogleFonts.poppins(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
+  static TextStyle get accent => GoogleFonts.plusJakartaSans(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
     color: AppColors.primary,
     letterSpacing: 0.5,
   );

@@ -99,7 +99,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         border: Border.all(color: AppColors.primary, width: 2),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.2),
+            color: AppColors.primary.withValues(alpha: 0.2),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -132,7 +132,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       blurRadius: 12,
                     ),
                   ],

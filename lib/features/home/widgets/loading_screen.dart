@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_text_styles.dart';
 import '../portfolio_home.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -132,11 +133,10 @@ class _LoadingScreenState extends State<LoadingScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Loading...',
-              style: TextStyle(
+              'Initializing Portfolio...',
+              style: AppTextStyles.bodySmall.copyWith(
                 color: AppColors.textSecondary,
-                fontSize: 14,
-                fontFamily: 'Poppins',
+                letterSpacing: 0.5,
               ),
             ),
           ],

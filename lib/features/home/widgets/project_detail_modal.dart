@@ -48,7 +48,7 @@ class _ProjectDetailModalState extends State<ProjectDetailModal> {
           border: Border.all(color: AppColors.primary, width: 2),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withOpacity(0.3),
+              color: AppColors.primary.withValues(alpha:0.3),
               blurRadius: 40,
               spreadRadius: 10,
             ),
@@ -113,7 +113,7 @@ class _ProjectDetailModalState extends State<ProjectDetailModal> {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.primary.withOpacity(0.3),
+                                color: AppColors.primary.withValues(alpha:0.3),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
@@ -209,7 +209,7 @@ class _ProjectDetailModalState extends State<ProjectDetailModal> {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.primary.withOpacity(0.2),
+                                  color: AppColors.primary.withValues(alpha:0.2),
                                   blurRadius: 20,
                                   offset: const Offset(0, 8),
                                 ),
@@ -389,7 +389,7 @@ class _NavigationButtonState extends State<_NavigationButton> {
                 ? AppColors.primaryGradient
                 : null,
             color: !_isHovered || !isEnabled
-                ? AppColors.surface.withOpacity(0.9)
+                ? AppColors.surface.withValues(alpha: 0.9)
                 : null,
             shape: BoxShape.circle,
             border: Border.all(
@@ -399,7 +399,7 @@ class _NavigationButtonState extends State<_NavigationButton> {
             boxShadow: _isHovered && isEnabled
                 ? [
                     BoxShadow(
-                      color: AppColors.primary.withOpacity(0.4),
+                      color: AppColors.primary.withValues(alpha:0.4),
                       blurRadius: 12,
                       spreadRadius: 2,
                     ),
