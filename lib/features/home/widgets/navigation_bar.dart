@@ -177,9 +177,9 @@ class PortfolioNavigationBar extends StatelessWidget {
   }
 
   static Future<void> _openResume(BuildContext context) async {
-    final uri = Uri.parse('assets/cv/resume.pdf');
+    final uri = Uri.base.resolve('assets/assets/cv/resume.pdf');
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
   }
 

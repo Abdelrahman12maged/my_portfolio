@@ -70,7 +70,7 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   Future<void> _openUrl(String url) async {
-    final uri = Uri.parse(url);
+    final uri = Uri.base.resolve(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
@@ -208,7 +208,7 @@ class _HeroSectionState extends State<HeroSection>
             _OutlineCtaButton(
               label: 'Download Resume',
               icon: FontAwesomeIcons.fileArrowDown,
-              onPressed: () => _openUrl('assets/cv/resume.pdf'),
+              onPressed: () => _openUrl('assets/assets/cv/resume.pdf'),
             ),
           ],
         ),
